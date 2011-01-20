@@ -65,9 +65,9 @@ char* file_to_buf(char* file)
 void cdn_getfile(char* file, char* output_file)
 {
 	char buf[256];
-	sprintf(buf, "wget --quiet %s%s/%s --output-file=%s",
-		cdn, title_id, file, output_file);
-	
+	sprintf(buf, "wget --quiet --output-document=%s %s%s/%s",
+		output_file, cdn, title_id, file);
+	printf("%s\n", buf);
 	if(system(buf) != 0)
 	{
 		printf("wget failed.\n");
